@@ -18,12 +18,11 @@ EVRPC_HEADER(RequestVote, request_vote_request, request_vote_response)
 EVRPC_GENERATE(RequestVote, request_vote_request, request_vote_response)
 
 static void request_vote_cb(EVRPC_STRUCT(RequestVote)* rpc, void * arg) {
-  /*
-  struct request_vote_reply* rvr = rpc->reply;
-  rvr->term = 1;
-  rvr->vote_granted = 1;
+
+  struct request_vote_response* rvr = rpc->reply;
+  EVTAG_ASSIGN(rvr, term, 1);
+  EVTAG_ASSIGN(rvr, vote_granted, 1);
   EVRPC_REQUEST_DONE(rpc);
-  */
 }
 
 int main( int argc, char * argv[] ) {
