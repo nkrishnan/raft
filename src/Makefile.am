@@ -4,3 +4,4 @@
 bin_PROGRAMS = rack_server
 
 rack_server_SOURCES = rack_server.c rack.gen.c
+rack_server_LDADD = -levent
