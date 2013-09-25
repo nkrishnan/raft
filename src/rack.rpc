@@ -1,0 +1,31 @@
+
+struct request_vote_request {
+       int64 term                    = 1;
+       int64 candidate_id            = 2;
+       int64 last_log_index          = 3;
+       int64 last_log_term           = 4;
+}
+
+struct request_vote_response {
+       int64 term                    = 1;
+       int vote_granted              = 2;
+}
+
+struct entry {
+       int64 index                   = 1;
+       string command                = 2;
+}
+
+struct append_entries_request {
+       int64 term                    = 1;
+       int64 leader_id               = 2;
+       int64 prev_log_index          = 3;
+       int64 prev_log_term           = 4;
+       array struct[entry] entries   = 5;
+       int64 leader_commit           = 6;
+}
+
+struct append_entries_response {
+       int64 term                    = 1;
+       int success                   = 2;
+}
