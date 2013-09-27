@@ -32,7 +32,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = rack_server$(EXEEXT)
+bin_PROGRAMS = raft_server$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -45,10 +45,10 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_rack_server_OBJECTS = rack_server.$(OBJEXT) rack.gen.$(OBJEXT) \
+am_raft_server_OBJECTS = raft_server.$(OBJEXT) raft.gen.$(OBJEXT) \
 	STATE.$(OBJEXT)
-rack_server_OBJECTS = $(am_rack_server_OBJECTS)
-rack_server_DEPENDENCIES =
+raft_server_OBJECTS = $(am_raft_server_OBJECTS)
+raft_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -57,16 +57,16 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(rack_server_SOURCES)
-DIST_SOURCES = $(rack_server_SOURCES)
+SOURCES = $(raft_server_SOURCES)
+DIST_SOURCES = $(raft_server_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/neeraj/Dev/rack/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/neeraj/Dev/raft/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
-AUTOCONF = ${SHELL} /home/neeraj/Dev/rack/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/neeraj/Dev/rack/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/neeraj/Dev/rack/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/neeraj/Dev/raft/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/neeraj/Dev/raft/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/neeraj/Dev/raft/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -91,7 +91,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/neeraj/Dev/rack/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/neeraj/Dev/raft/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = full-package-name
@@ -106,10 +106,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = VERSION
-abs_builddir = /home/neeraj/Dev/rack/src
-abs_srcdir = /home/neeraj/Dev/rack/src
-abs_top_builddir = /home/neeraj/Dev/rack
-abs_top_srcdir = /home/neeraj/Dev/rack
+abs_builddir = /home/neeraj/Dev/raft/src
+abs_srcdir = /home/neeraj/Dev/raft/src
+abs_top_builddir = /home/neeraj/Dev/raft
+abs_top_srcdir = /home/neeraj/Dev/raft
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -128,7 +128,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/neeraj/Dev/rack/install-sh
+install_sh = ${SHELL} /home/neeraj/Dev/raft/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -148,8 +148,8 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-rack_server_SOURCES = rack_server.c rack.gen.c STATE.c
-rack_server_LDADD = -levent
+raft_server_SOURCES = raft_server.c raft.gen.c STATE.c
+raft_server_LDADD = -levent
 all: all-am
 
 .SUFFIXES:
@@ -221,9 +221,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-rack_server$(EXEEXT): $(rack_server_OBJECTS) $(rack_server_DEPENDENCIES) $(EXTRA_rack_server_DEPENDENCIES) 
-	@rm -f rack_server$(EXEEXT)
-	$(LINK) $(rack_server_OBJECTS) $(rack_server_LDADD) $(LIBS)
+raft_server$(EXEEXT): $(raft_server_OBJECTS) $(raft_server_DEPENDENCIES) $(EXTRA_raft_server_DEPENDENCIES) 
+	@rm -f raft_server$(EXEEXT)
+	$(LINK) $(raft_server_OBJECTS) $(raft_server_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -232,8 +232,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/STATE.Po
-include ./$(DEPDIR)/rack.gen.Po
-include ./$(DEPDIR)/rack_server.Po
+include ./$(DEPDIR)/raft.gen.Po
+include ./$(DEPDIR)/raft_server.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

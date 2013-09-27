@@ -1,9 +1,9 @@
 /*
- * Automatically generated from rack.rpc
+ * Automatically generated from raft.rpc
  */
 
-#ifndef _RACK_RPC_
-#define _RACK_RPC_
+#ifndef _RAFT_RPC_
+#define _RAFT_RPC_
 
 #include <event2/util.h> /* for ev_uint*_t */
 #include <event2/rpc.h>
@@ -27,8 +27,8 @@ enum request_vote_request_ {
 struct request_vote_request_access_ {
   int (*term_assign)(struct request_vote_request *, const ev_uint64_t);
   int (*term_get)(struct request_vote_request *, ev_uint64_t *);
-  int (*candidate_id_assign)(struct request_vote_request *, const ev_uint64_t);
-  int (*candidate_id_get)(struct request_vote_request *, ev_uint64_t *);
+  int (*candidate_id_assign)(struct request_vote_request *, const char *);
+  int (*candidate_id_get)(struct request_vote_request *, char * *);
   int (*last_log_index_assign)(struct request_vote_request *, const ev_uint64_t);
   int (*last_log_index_get)(struct request_vote_request *, ev_uint64_t *);
   int (*last_log_term_assign)(struct request_vote_request *, const ev_uint64_t);
@@ -39,7 +39,7 @@ struct request_vote_request {
   struct request_vote_request_access_ *base;
 
   ev_uint64_t term_data;
-  ev_uint64_t candidate_id_data;
+  char *candidate_id_data;
   ev_uint64_t last_log_index_data;
   ev_uint64_t last_log_term_data;
 
@@ -62,8 +62,8 @@ int evtag_unmarshal_request_vote_request(struct evbuffer *, ev_uint32_t,
     struct request_vote_request *);
 int request_vote_request_term_assign(struct request_vote_request *, const ev_uint64_t);
 int request_vote_request_term_get(struct request_vote_request *, ev_uint64_t *);
-int request_vote_request_candidate_id_assign(struct request_vote_request *, const ev_uint64_t);
-int request_vote_request_candidate_id_get(struct request_vote_request *, ev_uint64_t *);
+int request_vote_request_candidate_id_assign(struct request_vote_request *, const char *);
+int request_vote_request_candidate_id_get(struct request_vote_request *, char * *);
 int request_vote_request_last_log_index_assign(struct request_vote_request *, const ev_uint64_t);
 int request_vote_request_last_log_index_get(struct request_vote_request *, ev_uint64_t *);
 int request_vote_request_last_log_term_assign(struct request_vote_request *, const ev_uint64_t);
@@ -270,4 +270,4 @@ int append_entries_response_success_assign(struct append_entries_response *, con
 int append_entries_response_success_get(struct append_entries_response *, ev_uint32_t *);
 /* --- append_entries_response done --- */
 
-#endif  /* _RACK_RPC_ */
+#endif  /* _RAFT_RPC_ */

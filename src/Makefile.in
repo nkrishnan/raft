@@ -32,7 +32,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = rack_server$(EXEEXT)
+bin_PROGRAMS = raft_server$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -45,10 +45,10 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_rack_server_OBJECTS = rack_server.$(OBJEXT) rack.gen.$(OBJEXT) \
+am_raft_server_OBJECTS = raft_server.$(OBJEXT) raft.gen.$(OBJEXT) \
 	STATE.$(OBJEXT)
-rack_server_OBJECTS = $(am_rack_server_OBJECTS)
-rack_server_DEPENDENCIES =
+raft_server_OBJECTS = $(am_raft_server_OBJECTS)
+raft_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -57,8 +57,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(rack_server_SOURCES)
-DIST_SOURCES = $(rack_server_SOURCES)
+SOURCES = $(raft_server_SOURCES)
+DIST_SOURCES = $(raft_server_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -148,8 +148,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-rack_server_SOURCES = rack_server.c rack.gen.c STATE.c
-rack_server_LDADD = -levent
+raft_server_SOURCES = raft_server.c raft.gen.c STATE.c
+raft_server_LDADD = -levent
 all: all-am
 
 .SUFFIXES:
@@ -221,9 +221,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-rack_server$(EXEEXT): $(rack_server_OBJECTS) $(rack_server_DEPENDENCIES) $(EXTRA_rack_server_DEPENDENCIES) 
-	@rm -f rack_server$(EXEEXT)
-	$(LINK) $(rack_server_OBJECTS) $(rack_server_LDADD) $(LIBS)
+raft_server$(EXEEXT): $(raft_server_OBJECTS) $(raft_server_DEPENDENCIES) $(EXTRA_raft_server_DEPENDENCIES) 
+	@rm -f raft_server$(EXEEXT)
+	$(LINK) $(raft_server_OBJECTS) $(raft_server_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -232,8 +232,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/STATE.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rack.gen.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rack_server.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/raft.gen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/raft_server.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
