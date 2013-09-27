@@ -45,7 +45,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_rack_server_OBJECTS = rack_server.$(OBJEXT) rack.gen.$(OBJEXT)
+am_rack_server_OBJECTS = rack_server.$(OBJEXT) rack.gen.$(OBJEXT) \
+	STATE.$(OBJEXT)
 rack_server_OBJECTS = $(am_rack_server_OBJECTS)
 rack_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -147,7 +148,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-rack_server_SOURCES = rack_server.c rack.gen.c
+rack_server_SOURCES = rack_server.c rack.gen.c STATE.c
 rack_server_LDADD = -levent
 all: all-am
 
@@ -230,6 +231,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/STATE.Po
 include ./$(DEPDIR)/rack.gen.Po
 include ./$(DEPDIR)/rack_server.Po
 
